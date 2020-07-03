@@ -13,18 +13,17 @@ function App() {
   const [editItem, setEditItem] = useState(false)
 
   function handleChange (e) {
+
     setItem(e.target.value)
   }
 
   function handleSubmit (e) {
-    e.preventDefault()
 
+    e.preventDefault()
     const newItem = {
       id:id,
       title:item
     }
-  
-    console.log(newItem)
   
     const updatedItems = [...items, newItem]
   
@@ -35,7 +34,14 @@ function App() {
   }
 
   function clearList(){
+
     setItems([])
+  }
+
+  function handleDelete(id){
+
+    const filteredItems = items.filter(item => item.id !== id)
+    setItems(filteredItems)
   }
 
   return (
@@ -51,6 +57,7 @@ function App() {
           <TodoList 
             items={items}
             clearList={clearList}
+            handleDelete={handleDelete}
           />
         </div>
       </div>

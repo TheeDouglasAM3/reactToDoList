@@ -4,7 +4,7 @@ import TodoItem from './TodoItem'
 export default class TodoList extends Component {
     render() {
 
-        const {items, clearList} = this.props
+        const {items, clearList, handleDelete} = this.props
 
         return (
             <ul className="list-group mt-5">
@@ -16,6 +16,7 @@ export default class TodoList extends Component {
                             <TodoItem 
                                 key={item.id}
                                 title={item.title}
+                                handleDelete={() => handleDelete(item.id)}
                             />
                         )
                     })
