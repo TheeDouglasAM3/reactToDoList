@@ -44,6 +44,17 @@ function App() {
     setItems(filteredItems)
   }
 
+  function handleEdit(id) {
+
+    const filteredItems = items.filter(item => item.id !== id)
+    const selectedItem = items.find(item => item.id === id)
+
+    setItems(filteredItems)
+    setItem(selectedItem.title)
+    setEditItem(true)
+    setId(id)
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -53,11 +64,13 @@ function App() {
             item={item}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            editItem={editItem}
           />
           <TodoList 
             items={items}
             clearList={clearList}
             handleDelete={handleDelete}
+            handleEdit={handleEdit}
           />
         </div>
       </div>
